@@ -24,7 +24,9 @@ and what you should write is the sayHi function that makes the code above work,
 
 
 
-  //Code Here for first
+function first(array, func){
+    return func(array[0]);
+}
   
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -37,7 +39,9 @@ first(names, function(firstName){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
+function last(array, func) {
+    return func(array[array.length - 1])
+};
 
   //Code Here for last
 
@@ -51,9 +55,9 @@ last(names, function(lastName){
 
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
-
-
-
+function multiply (num1, num2, func){
+    return func(num1*num2);
+}
 
 
   //Code Here for multiply
@@ -69,17 +73,25 @@ multiply(4, 3, function(answer){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
+function contains (array, stringName, func){
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] === stringName) {
+            return func(true);
+        }
+    }
+    return func(false);
+
+}
 
 
-
-  //Code Here for contains
+//Code Here for contains
 
 contains(names, 'Colt', function(result){
-  if(result === true){
-    console.log('Colt is in the array');
-  } else {
-    console.log('Colt is not in the array');
-  }
+    if(result === true){
+        console.log('Colt is in the array');
+    } else {
+        console.log('Colt is not in the array');
+    }
 });
 
 
@@ -88,7 +100,17 @@ contains(names, 'Colt', function(result){
 
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
-
+//Need to go over
+function uniq (array, func) {
+    var sortedArray = array.sort();
+    for (var i = 0; i < array.length; i++) {
+        if (sortedArray[i + 1]=== sortedArray[i]){
+            sortedArray.splice(i,2);
+            i--;
+        }
+    }
+    return func(sortedArray);
+}
 
 
     //Code Here for uniq
@@ -104,6 +126,11 @@ uniq(names, function(uniqArr){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
+function each(array, func) {
+    for (var i = 0 ; i <array.length; i++){
+        func(array[i], i);
+    }
+}
 
 
     //Code Here for each
